@@ -65,8 +65,37 @@ $superheroes = [
 
 ?>
 
+<?php /*check for exercise3 - part 1, original check in <ul> block, part 2 begins @ <?php elseif ($match): ?>*/
+  $query = isset($_GET['query']) ? trim(strip_tags($_GET['query'])) : "";
+  $match = null;
+
+  if ($query !== "") {
+    foreach ($superheroes as $superhero) {
+      if (strcasecmp($query, $superhero['name']) === 0 ||
+          strcasecmp($query, $superhero['alias']) === 0) {
+        $match = $superhero;
+        break;
+      }
+    }
+  }
+?>
+
+<?php if ($query === ""): ?>
+
 <ul>
 <?php foreach ($superheroes as $superhero): ?>
   <li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
 </ul>
+
+<?php elseif ($match): ?>
+
+<h3><?= htmlspecialchars($match['alias'], ENT_QUOTES, 'UTF-8'); ?></h3>
+<h4><?= htmlspecialchars($match['name'], ENT_QUOTES, 'UTF-8'); ?></h4>
+<p><?= htmlspecialchars($match['biography'], ENT_QUOTES, 'UTF-8'); ?></p>
+
+<?php else: ?>
+
+<p>Superhero not found</p>
+
+<?php endif; ?>

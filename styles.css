@@ -1,21 +1,137 @@
+:root {
+    --header-bg: #4f8ab8;
+    --page-bg: #efefef;
+    --ink: #1c2236;
+    --accent: #c62828;
+    --accent-dark: #a31f1f;
+    --rule: #cfcfcf;
+}
+ 
 * {
     box-sizing: border-box;
 }
  
 body {
     margin: 0;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #1d2a44;
+    background: #fff;
+    color: var(--ink);
+    font-family: "Roboto", Arial, sans-serif;
+    line-height: 1.5;
+}
+ 
+header {
+    background: var(--header-bg);
+    padding: 1.1rem 1rem;
+    text-align: center;
+}
+ 
+h1 {
+    margin: 0;
+    color: #fff;
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
 }
  
 main {
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 2.5rem;
+    background: var(--page-bg);
+    min-height: calc(100vh - 4rem);
 }
  
-#search-btn {
-    border-radius: 3px;
-    padding: 0.6rem 1.4rem;
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+ 
+.search-row {
+    display: flex;
+    gap: 0.75rem;
+}
+ 
+input[type="text"] {
+    flex: 1;
+    min-width: 0;
+    padding: 0.65rem 0.8rem;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    background: #fff;
+    font: inherit;
+    color: var(--ink);
+}
+ 
+button {
+    padding: 0.65rem 1.4rem;
+    border: 0;
+    border-radius: 2px;
+    background: var(--accent);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
     cursor: pointer;
+}
+ 
+button:hover {
+    background: var(--accent-dark);
+}
+ 
+input:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 2px;
+}
+ 
+h2 {
+    margin: 2rem 0 0;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--rule);
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+ 
+#result {
+    padding-top: 1rem;
+}
+ 
+#result ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+ 
+#result h3 {
+    margin: 0;
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+}
+ 
+#result h4 {
+    margin: 0 0 0.75rem;
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+ 
+#result p {
+    margin: 0;
+}
+ 
+#result.not-found {
+    color: var(--accent);
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+ 
+@media (max-width: 480px) {
+    .search-row {
+        flex-direction: column;
+    }
 }
